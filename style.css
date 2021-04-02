@@ -1,0 +1,42 @@
+body {
+  background-color: #ddd0f7;
+}
+
+#editor,
+.preview {
+  background-color: #fff;
+  min-height: 50vh;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  border: 2px solid #891294;
+}
+
+nav,
+footer {
+  background-color: #891294;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+h5 {
+  color: #891294;
+}
+
+img {
+  max-width: 100%;
+}
+pre {
+  background-color: #ddd0f7;
+  padding: 1rem;
+}
+
+table,
+th,
+td {
+  border: 3px solid #891294;
+  padding: 0.5rem;
+}
+
+blockquote {
+  background: #ddd0f7;
+  border-left: 10px solid #891294;
+  padding: 0.3em 1rem;
+}
