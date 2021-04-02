@@ -38,20 +38,7 @@ node -v
 If these commands print out a version number in the terminal, you are good to go. If not, you need to go ahead and install what is missing. For the purpose of this project, I used [Node](https://nodejs.org/en/)
 
 ### Installation
-
-1. Clone the repo on your local machine
-   ```sh
-   git clone https://github.com/Mar-Issah/Markdown-Previewer-.git
-   ```
-2. Download and install [Visual Studio Code](https://code.visualstudio.com/)
-3. Change directory into the new folder and type the following, this installs the required dependencies
-    ```sh
-    npm install
-   ```
-4. To run the React project.
-   ```sh
-   npm start
-   ```
+This is a distribution version of the project and I created it outside the react environment using CDN links. You can integrate the code into your existing project.
 
 <br>
 
