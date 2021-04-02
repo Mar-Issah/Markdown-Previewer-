@@ -1,18 +1,6 @@
-function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;} //-----------------------APP.JS------------------
-//set the sate to the text this is is the whole textarea.
-//destructure it to recieve the state
-//set the value of the text area to the markdown state and also when ever user types in it the value is change. use the handle change fxn
-//now build th UI using our regular html elements withe the help of bootstrap
-//maked-cdn: a markedown parser. This has e method marked() which accepts the markdown text before the return
+//dangerouslySetInnerHTML is an attribute under DOM elements in React.  dangerouslySetInnerHTML is React's replacement for using innerHTML in the browser DOM. ..
 
-//dangerouslySetInnerHTML is an attribute under DOM elements in React. According to the official documentation, dangerouslySetInnerHTML is React's replacement for using innerHTML in the browser DOM. ... In simple words, using dangerouslySetInnerHTML , you can set HTML directly from React. So use this for our preview area. dangerouslySetInnerHTML={{__html: markdown}}
-
-//so the marked basically takes the text input and convert it stores in the markdown variable which you pass the the dangerouslySetInnerHTML
-
-//The defaultText is now the text for the initial state
-
-//add the booleans to the marked to make some setting and be compatible with github
-
+//The defaultText as the initial state for the editor
 const defaultText = `
 # Greetings Everyone!
 ---
@@ -63,74 +51,76 @@ Don't forget to add your info to the table:
 `;
 
 class App extends React.Component {
-  constructor(props) {
-    super(props);_defineProperty(this, "handleChange",
+	constructor(props) {
+		super(props);
+
+		this.state = {
+			text: defaultText,
+		};
+	}
+
+	handleChange = (e) => {
+		this.setState({
+			text: e.target.value,
+		});
+	};
+
+	render() {
+    //destructure it to recieve the state in jsx
+		const { text } = this.state;
+
+    //convert text into markdown, set break to true makes it compatible with github
+		const markdown = marked(text, { breaks: true });
+
+		return (
+			<div>
+				<nav className="navbar navbar-dark navbar-expand-lg text-light d-flex justify-content-center">
+					<h2>~ Markdown Previewer ~</h2>
+				</nav>
+				<div className="container mt-3">
+					<div className="col-8">
+						<h5 className="text-center">Enter your markdown: </h5>
+						<textarea
+							className="form-control pl-3"
+							id="editor"
+							value={text}
+							onChange={this.handleChange}
+						/>
+					</div>
+
+					<div className="col-10 mt-5 ml-5">
+						<h5 className="text-center">View the result: </h5>
+						<div
+							id="preview"
+							className="rounded preview p-3"
+							dangerouslySetInnerHTML={{ __html: markdown }}
+						/>
+					</div>
+				</div>
+				<footer className="p-2 text-light mt-4">
+					<p id="signature" class="text-center">
+						~~ made by
+						<a
+							className="text-light"
+							href="https://codepen.io/marsiya-issah"
+							target="_blank"
+						>
+							<strong> Marsiya Issah</strong>
+						</a>
+					</p>
+				</footer>
+			</div>
+		);
+	}
+}
+
+//---Render html on the DOM
+
+ReactDOM.render(
+	<React.StrictMode>
+		<App />
+	</React.StrictMode>,
+	document.getElementById("root")
+);
 
 
-
-
-
-
-    e => {
-      this.setState({
-        text: e.target.value });
-
-    });this.state = { text: defaultText };}
-
-  render() {
-    const { text } = this.state;
-
-    const markdown = marked(text, { breaks: true });
-
-    return /*#__PURE__*/(
-      React.createElement("div", null, /*#__PURE__*/
-      React.createElement("nav", { className: "navbar navbar-dark navbar-expand-lg text-light d-flex justify-content-center" }, /*#__PURE__*/
-      React.createElement("h2", null, "~ Markdown Previewer ~")), /*#__PURE__*/
-
-      React.createElement("div", { className: "container mt-3" }, /*#__PURE__*/
-      React.createElement("div", { className: "col-8" }, /*#__PURE__*/
-      React.createElement("h5", { className: "text-center" }, "Enter your markdown: "), /*#__PURE__*/
-      React.createElement("textarea", {
-        className: "form-control pl-3",
-        id: "editor",
-        value: text,
-        onChange: this.handleChange })), /*#__PURE__*/
-
-
-
-      React.createElement("div", { className: "col-10 mt-5 ml-5" }, /*#__PURE__*/
-      React.createElement("h5", { className: "text-center" }, "View the result: "), /*#__PURE__*/
-      React.createElement("div", { id: "preview",
-        className: "rounded preview p-3",
-        dangerouslySetInnerHTML: { __html: markdown } }))), /*#__PURE__*/
-
-
-
-      React.createElement("footer", { className: "p-2 text-light mt-4" }, /*#__PURE__*/
-      React.createElement("p", { id: "signature", class: "text-center" }, "~~ made by", /*#__PURE__*/
-
-      React.createElement("a", {
-        className: "text-light",
-        href: "https://codepen.io/marsiya-issah",
-        target: "_blank" }, /*#__PURE__*/
-
-      React.createElement("strong", null, " Marsiya Issah"))))));
-
-
-
-
-
-  }}
-
-
-//---INDEX.JS---place it at the bottom so it renders last-----------
-
-ReactDOM.render( /*#__PURE__*/
-React.createElement(React.StrictMode, null, /*#__PURE__*/
-React.createElement(App, null)),
-
-document.getElementById("root"));
-
-
-//-----------------------------APP----------------
-//-----------------------------APP----------------
