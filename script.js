@@ -1,18 +1,8 @@
 function _defineProperty(obj, key, value) {if (key in obj) {Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true });} else {obj[key] = value;}return obj;} //-----------------------APP.JS------------------
-//set the sate to the text this is is the whole textarea.
-//destructure it to recieve the state
-//set the value of the text area to the markdown state and also when ever user types in it the value is change. use the handle change fxn
-//now build th UI using our regular html elements withe the help of bootstrap
-//maked-cdn: a markedown parser. This has e method marked() which accepts the markdown text before the return
 
-//dangerouslySetInnerHTML is an attribute under DOM elements in React. According to the official documentation, dangerouslySetInnerHTML is React's replacement for using innerHTML in the browser DOM. ... In simple words, using dangerouslySetInnerHTML , you can set HTML directly from React. So use this for our preview area. dangerouslySetInnerHTML={{__html: markdown}}
+//dangerouslySetInnerHTML is an attribute under DOM elements in React.  dangerouslySetInnerHTML is React's replacement for using innerHTML in the browser DOM. ... I
 
-//so the marked basically takes the text input and convert it stores in the markdown variable which you pass the the dangerouslySetInnerHTML
-
-//The defaultText is now the text for the initial state
-
-//add the booleans to the marked to make some setting and be compatible with github
-
+//The defaultText is the text for the initial state of the editor
 const defaultText = `
 # Greetings Everyone!
 ---
@@ -66,11 +56,6 @@ class App extends React.Component {
   constructor(props) {
     super(props);_defineProperty(this, "handleChange",
 
-
-
-
-
-
     e => {
       this.setState({
         text: e.target.value });
@@ -78,8 +63,10 @@ class App extends React.Component {
     });this.state = { text: defaultText };}
 
   render() {
+    //destructure text to be able to use in jsx
     const { text } = this.state;
-
+    
+  //convert the mardown text, set breaks to ture to be compatible with github
     const markdown = marked(text, { breaks: true });
 
     return /*#__PURE__*/(
@@ -116,14 +103,9 @@ class App extends React.Component {
 
       React.createElement("strong", null, " Marsiya Issah"))))));
 
-
-
-
-
   }}
 
 
-//---INDEX.JS---place it at the bottom so it renders last-----------
 
 ReactDOM.render( /*#__PURE__*/
 React.createElement(React.StrictMode, null, /*#__PURE__*/
@@ -131,6 +113,3 @@ React.createElement(App, null)),
 
 document.getElementById("root"));
 
-
-//-----------------------------APP----------------
-//-----------------------------APP----------------
