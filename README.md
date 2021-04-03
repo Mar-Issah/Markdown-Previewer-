@@ -38,7 +38,7 @@ node -v
 If these commands print out a version number in the terminal, you are good to go. If not, you need to go ahead and install what is missing. For the purpose of this project, I used [Node](https://nodejs.org/en/)
 
 ### Installation
-This is a distribution version of the project and I created it outside the react environment using CDN links. You can integrate the code into your existing project.
+This was created outside the react environment using CDN links. You can integrate the code into your existing project.
 
 <br>
 
